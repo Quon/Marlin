@@ -61,7 +61,7 @@ public:
 
   // Fast! binary file transfer
   #if ENABLED(BINARY_FILE_TRANSFER)
-    #if HAS_MULTI_SERIAL
+    #if NUM_SERIAL > 1
       static int8_t transfer_port_index;
     #else
       static constexpr int8_t transfer_port_index = 0;
@@ -152,7 +152,6 @@ public:
 
   static inline bool isFileOpen() { return isMounted() && file.isOpen(); }
   static inline uint32_t getIndex() { return sdpos; }
-  static inline uint32_t getFileSize() { return filesize; }
   static inline bool eof() { return sdpos >= filesize; }
   static inline void setIndex(const uint32_t index) { sdpos = index; file.seekSet(index); }
   static inline char* getWorkDirName() { workDir.getDosName(filename); return filename; }
@@ -165,7 +164,9 @@ public:
   #if ENABLED(AUTO_REPORT_SD_STATUS)
     static void auto_report_sd_status();
     static inline void set_auto_report_interval(uint8_t v) {
-      TERN_(HAS_MULTI_SERIAL, auto_report_port = serial_port_index);
+      #if NUM_SERIAL > 1
+        auto_report_port = serial_port_index;
+      #endif
       NOMORE(v, 60);
       auto_report_sd_interval = v;
       next_sd_report_ms = millis() + 1000UL * v;
@@ -257,7 +258,7 @@ private:
   #if ENABLED(AUTO_REPORT_SD_STATUS)
     static uint8_t auto_report_sd_interval;
     static millis_t next_sd_report_ms;
-    #if HAS_MULTI_SERIAL
+    #if NUM_SERIAL > 1
       static int8_t auto_report_port;
     #endif
   #endif

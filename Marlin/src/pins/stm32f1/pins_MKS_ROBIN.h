@@ -22,69 +22,68 @@
 #pragma once
 
 /**
- * MKS Robin (STM32F130ZET6) board pin assignments
- *
- * https://github.com/makerbase-mks/MKS-Robin/tree/master/MKS%20Robin/Hardware
+ * MKS Robin nano (STM32F130VET6) board pin assignments
  */
 
 #ifndef __STM32F1__
   #error "Oops! Select an STM32F1 board in 'Tools > Board.'"
 #elif HOTENDS > 2 || E_STEPPERS > 2
-  #error "MKS Robin supports up to 2 hotends / E-steppers. Comment out this line to continue."
+  #error "MKS Robin nano supports up to 2 hotends / E-steppers. Comment out this line to continue."
 #endif
 
-#define BOARD_INFO_NAME "MKS Robin"
+#define BOARD_INFO_NAME "MKS Robin nano"
 
 //
 // Release PB4 (Y_ENABLE_PIN) from JTAG NRST role
 //
-#define DISABLE_JTAG
+#define DISABLE_DEBUG
 
 //
-// Enable SD EEPROM to prevent infinite boot loop
+// EEPROM
 //
+//#define FLASH_EEPROM_EMULATION
 #define SDCARD_EEPROM_EMULATION
 
 //
-// Servos
+// Note: MKS Robin board is using SPI2 interface.
 //
-#define SERVO0_PIN                          PC3   // XS1 - 5
-#define SERVO1_PIN                          PA1   // XS1 - 6
-#define SERVO2_PIN                          PF9   // XS2 - 5
-#define SERVO3_PIN                          PF8   // XS2 - 6
+//#define SPI_MODULE 2
+#define ENABLE_SPI2
 
 //
 // Limit Switches
 //
-#define X_MIN_PIN                           PB12
-#define X_MAX_PIN                           PB0
-#define Y_MIN_PIN                           PC5
-#define Y_MAX_PIN                           PC4
-#define Z_MIN_PIN                           PA4
-#define Z_MAX_PIN                           PF7
+#define X_STOP_PIN                          PA15
+#define Y_STOP_PIN                          PA12
+#define Z_MIN_PIN                           PA11
+#define Z_MAX_PIN                           PC4
+
+#ifndef FIL_RUNOUT_PIN
+  #define FIL_RUNOUT_PIN                    PA4   // MT_DET
+#endif
 
 //
 // Steppers
 //
-#define X_ENABLE_PIN                        PB9
-#define X_STEP_PIN                          PB8
-#define X_DIR_PIN                           PB5
+#define X_ENABLE_PIN                        PE4
+#define X_STEP_PIN                          PE3
+#define X_DIR_PIN                           PE2
 
-#define Y_ENABLE_PIN                        PB4
-#define Y_STEP_PIN                          PG15
-#define Y_DIR_PIN                           PG10
+#define Y_ENABLE_PIN                        PE1
+#define Y_STEP_PIN                          PE0
+#define Y_DIR_PIN                           PB9
 
-#define Z_ENABLE_PIN                        PD7
-#define Z_STEP_PIN                          PD3
-#define Z_DIR_PIN                           PG14
+#define Z_ENABLE_PIN                        PB8
+#define Z_STEP_PIN                          PB5
+#define Z_DIR_PIN                           PB4
 
-#define E0_ENABLE_PIN                       PG13
-#define E0_STEP_PIN                         PG8
-#define E0_DIR_PIN                          PA15
+#define E0_ENABLE_PIN                       PB3
+#define E0_STEP_PIN                         PD6
+#define E0_DIR_PIN                          PD3
 
-#define E1_ENABLE_PIN                       PA12
-#define E1_STEP_PIN                         PA11
-#define E1_DIR_PIN                          PA8
+#define E1_ENABLE_PIN                       PA3
+#define E1_STEP_PIN                         PA6
+#define E1_DIR_PIN                          PA1
 
 //
 // Temperature Sensors
@@ -96,104 +95,174 @@
 //
 // Heaters / Fans
 //
-#define HEATER_0_PIN                        PC7   // HEATER1
-#define HEATER_1_PIN                        PA6   // HEATER2
-#define HEATER_BED_PIN                      PC6   // HOT BED
+#define HEATER_0_PIN                        PC3   // HEATER1
+#define HEATER_1_PIN                        PB0   // HEATER2
+#define HEATER_BED_PIN                      PA0   // HOT BED
 
-#define FAN_PIN                             PA7   // FAN
+#define FAN_PIN                             PB1   // FAN
 
-/**
- * Note: MKS Robin board is using SPI2 interface. Make sure your stm32duino library is configured accordingly
- */
+//
+// Thermocouples
+//
 //#define MAX6675_SS_PIN                    PE5   // TC1 - CS1
 //#define MAX6675_SS_PIN                    PE6   // TC2 - CS2
 
-#define POWER_LOSS_PIN                      PA2   // PW_DET
-#define PS_ON_PIN                           PA3   // PW_OFF
-#define FIL_RUNOUT_PIN                      PF11  // MT_DET
+//
+// Misc. Functions
+//
+//#define POWER_LOSS_PIN                    PA2   // PW_DET
+//#define PS_ON_PIN                         PA3   // PW_OFF
 
-#define BEEPER_PIN                          PC13
-#define LED_PIN                             PB2
+//#define SUICIDE_PIN 						            PB2     // Enable MKSPWC support ROBIN NANO v1.2 ONLY
+//#define SUICIDE_PIN_INVERTING 			        false
+
+//#define KILL_PIN 						                PA2     // Enable MKSPWC support ROBIN NANO v1.2 ONLY
+//#define KILL_PIN_INVERTING 				          true     // Enable MKSPWC support ROBIN NANO v1.2 ONLY
+
+//#define SERVO0_PIN                          PA8   // Enable BLTOUCH support ROBIN NANO v1.2 ONLY
+
+//#define LED_PIN                             PB2
+
+#define MT_DET_1_PIN				PA4
+#define MT_DET_PIN_INVERTING		false
+
+//
+// SD Card
+//
+#ifndef SDCARD_CONNECTION
+  #define SDCARD_CONNECTION              ONBOARD
+#endif
+
+#define SDIO_SUPPORT
+#define SD_DETECT_PIN                       PD12
+
+//
+// LCD / Controller
+//
+#define BEEPER_PIN                          PC5
 
 /**
- * Note: MKS Robin TFT screens use various TFT controllers
- * Supported screens are based on the ILI9341, ST7789V and ILI9328 (320x240)
- * ILI9488 is not supported
- * Define init sequences for other screens in u8g_dev_tft_320x240_upscale_from_128x64.cpp
- *
+ * Note: MKS Robin TFT screens use various TFT controllers.
  * If the screen stays white, disable 'LCD_RESET_PIN'
  * to let the bootloader init the screen.
- *
- * Setting an 'LCD_RESET_PIN' may cause a flicker when entering the LCD menu
- * because Marlin uses the reset as a failsafe to revive a glitchy LCD.
  */
-//#define LCD_RESET_PIN                     PF6
-#define LCD_BACKLIGHT_PIN                   PG11
-#define FSMC_CS_PIN                         PG12  // NE4
-#define FSMC_RS_PIN                         PF0   // A0
 
-#define LCD_USE_DMA_FSMC                          // Use DMA transfers to send data to the TFT
-#define FSMC_DMA_DEV                        DMA2
-#define FSMC_DMA_CHANNEL                 DMA_CH5
+#if ENABLED(SPI_GRAPHICAL_TFT)
 
-#if ENABLED(TOUCH_BUTTONS)
-  #define TOUCH_CS_PIN                      PB1   // SPI2_NSS
-  #define TOUCH_SCK_PIN                     PB13  // SPI2_SCK
-  #define TOUCH_MISO_PIN                    PB14  // SPI2_MISO
-  #define TOUCH_MOSI_PIN                    PB15  // SPI2_MOSI
-#endif
+  #if HAS_SPI_LCD
 
-// SPI1(PA7) & SPI3(PB5) not available
-#define ENABLE_SPI2
+    #define BEEPER_PIN       PC5
+    #define BTN_ENC          PE13
+    #define LCD_PINS_ENABLE  PD13
+    #define LCD_PINS_RS      PC6
+    #define BTN_EN1          PE8
+    #define BTN_EN2          PE11
+    #define LCD_BACKLIGHT_PIN -1
 
-#if ENABLED(SDIO_SUPPORT)
-  #define SCK_PIN                           PB13  // SPI2
-  #define MISO_PIN                          PB14  // SPI2
-  #define MOSI_PIN                          PB15  // SPI2
-  #define SS_PIN                            -1    // PB12 is X-
-  #define SD_DETECT_PIN                     PF12  // SD_CD
+    // MKS MINI12864 and MKS LCD12864B; If using MKS LCD12864A (Need to remove RPK2 resistor)
+    #if ENABLED(MKS_MINI_12864)
+      #define LCD_BACKLIGHT_PIN -1
+      #define LCD_RESET_PIN  -1
+      #define DOGLCD_A0      PD11
+      #define DOGLCD_CS      PE15
+      #define DOGLCD_SCK     PA5
+      #define DOGLCD_MOSI    PA7
+
+      // Required for MKS_MINI_12864 with this board
+      #define MKS_LCD12864B
+      #undef SHOW_BOOTSCREEN
+
+    #else // !MKS_MINI_12864
+
+      #define LCD_PINS_D4    PE14
+      #if ENABLED(ULTIPANEL)
+        #define LCD_PINS_D5  PE15
+        #define LCD_PINS_D6  PD11
+        #define LCD_PINS_D7  PD10
+      #endif
+
+      #ifndef ST7920_DELAY_1
+        #define ST7920_DELAY_1 DELAY_NS(125)
+      #endif
+      #ifndef ST7920_DELAY_2
+        #define ST7920_DELAY_2 DELAY_NS(125)
+      #endif
+      #ifndef ST7920_DELAY_3
+        #define ST7920_DELAY_3 DELAY_NS(125)
+      #endif
+
+    #endif // !MKS_MINI_12864
+
+  #else  
+
+	#define SPI_TFT_CS_PIN			PD11
+	#define SPI_TFT_SCK_PIN			PA5
+	#define SPI_TFT_MISO_PIN		PA6
+	#define SPI_TFT_MOSI_PIN		PA7
+	#define SPI_TFT_DC_PIN			PD10
+	#define SPI_TFT_RST_PIN			PC6
+
+	#define LCD_BACKLIGHT_PIN   PD13
+
+  #define TOUCH_CS_PIN                    PE14   	// SPI1_NSS
+  #define TOUCH_SCK_PIN                   PA5  	// SPI1_SCK
+  #define TOUCH_MISO_PIN                  PA6  	// SPI1_MISO
+  #define TOUCH_MOSI_PIN                  PA7  	// SPI1_MOSI
+
+  #define BTN_EN1          PE8
+  #define BTN_EN2          PE11
+  #define BEEPER_PIN       PC5
+  #define BTN_ENC          PE13
+
+  #endif//HAS_SPI_LCD
+
 #else
-  // SD as custom software SPI (SDIO pins)
-  #define SCK_PIN                           PC12
-  #define MISO_PIN                          PC8
-  #define MOSI_PIN                          PD2
-  #define SS_PIN                            -1
-  #define ONBOARD_SD_CS_PIN                 PC11
-  #define SDSS                              PD2
-  #define SD_DETECT_PIN                     -1
-#endif
+  #if ENABLED(TFT_LITTLE_VGL_UI)
+	//FSMC LCD
+	#define FSMC_CS_PIN				PD7    // NE4
+	#define FSMC_RS_PIN				PD11  // A0
 
-#if HAS_TMC_UART
-  /**
-   * TMC2208/TMC2209 stepper drivers
-   *
-   * Hardware serial communication ports.
-   * If undefined software serial is used according to the pins below
-   */
-  //#define X_HARDWARE_SERIAL  Serial1
-  //#define X2_HARDWARE_SERIAL Serial1
-  //#define Y_HARDWARE_SERIAL  Serial1
-  //#define Y2_HARDWARE_SERIAL Serial1
-  //#define Z_HARDWARE_SERIAL  Serial1
-  //#define Z2_HARDWARE_SERIAL Serial1
-  //#define E0_HARDWARE_SERIAL Serial1
-  //#define E1_HARDWARE_SERIAL Serial1
-  //#define E2_HARDWARE_SERIAL Serial1
-  //#define E3_HARDWARE_SERIAL Serial1
-  //#define E4_HARDWARE_SERIAL Serial1
+	#define TOUCH_CS_PIN			PA7    // SPI2_NSS
+	#define TOUCH_SCK_PIN			PB13  // SPI2_SCK
+	#define TOUCH_MISO_PIN			PB14  // SPI2_MISO
+	#define TOUCH_MOSI_PIN			PB15  // SPI2_MOSI
 
-  // Unused servo pins may be repurposed with SoftwareSerialM
-  //#define X_SERIAL_TX_PIN                 PF8   // SERVO3_PIN -- XS2 - 6
-  //#define Y_SERIAL_TX_PIN                 PF9   // SERVO2_PIN -- XS2 - 5
-  //#define Z_SERIAL_TX_PIN                 PA1   // SERVO1_PIN -- XS1 - 6
-  //#define E0_SERIAL_TX_PIN                PC3   // SERVO0_PIN -- XS1 - 5
-  //#define X_SERIAL_RX_PIN      X_SERIAL_TX_PIN
-  //#define Y_SERIAL_RX_PIN      Y_SERIAL_TX_PIN
-  //#define Z_SERIAL_RX_PIN      Z_SERIAL_TX_PIN
-  //#define E0_SERIAL_RX_PIN    E0_SERIAL_TX_PIN
+	#define LCD_BACKLIGHT_PIN		PD13
+	
+	#endif  //TFT_LITTLE_VGL_UI
 
-  // Reduce baud rate for software serial reliability
-  #if HAS_TMC_SW_SERIAL
-    #define TMC_BAUD_RATE 19200
+#endif// SPI_GRAPHICAL_TFT
+
+#if ENABLED(FSMC_GRAPHICAL_TFT)
+  //@
+  //#define DOGLCD_MOSI -1 // prevent redefine Conditionals_post.h
+  //#define DOGLCD_SCK -1
+
+  #define FSMC_CS_PIN        PD7    // NE4
+  #define FSMC_RS_PIN        PD11   // A0
+
+  #define LCD_USE_DMA_FSMC //
+  #define FSMC_DMA_DEV DMA2
+  #define FSMC_DMA_CHANNEL DMA_CH5
+
+  //#define LCD_RESET_PIN      PF6
+  //#define NO_LCD_REINIT             // Suppress LCD re-initialization
+
+  #define LCD_BACKLIGHT_PIN                 PD13
+
+  #if ENABLED(TOUCH_BUTTONS)
+    #define TOUCH_CS_PIN                    PA7   // SPI2_NSS
+    #define TOUCH_SCK_PIN                   PB13  // SPI2_SCK
+    #define TOUCH_MISO_PIN                  PB14  // SPI2_MISO
+    #define TOUCH_MOSI_PIN                  PB15  // SPI2_MOSI
   #endif
 #endif
+
+#define SPI_FLASH
+#if ENABLED(SPI_FLASH)
+	#define 	W25QXX_CS_PIN		PB12
+	#define 	W25QXX_MOSI_PIN		PB15
+	#define 	W25QXX_MISO_PIN		PB14
+	#define 	W25QXX_SCK_PIN		PB13
+#endif
+

@@ -380,8 +380,7 @@ bool StatusScreen::onTouchEnd(uint8_t tag) {
     case 4:
       if (isPrinting()) {
         GOTO_SCREEN(TuneMenu);
-      }
-      else {
+      } else {
         GOTO_SCREEN(MainMenu);
       }
       break;
@@ -395,8 +394,7 @@ bool StatusScreen::onTouchEnd(uint8_t tag) {
         #else
           return false;
         #endif
-      }
-      else {
+      } else {
         GOTO_SCREEN(MoveAxisScreen);
       }
       break;

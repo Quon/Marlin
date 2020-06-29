@@ -497,8 +497,7 @@ bool UIFlashStorage::is_present = false;
       if (verifyOk) {
         SERIAL_ECHOLNPGM("DONE");
         return SUCCESS;
-      }
-      else {
+      } else {
         SERIAL_ECHOLNPGM("FAIL");
         return VERIFY_ERROR;
       }
