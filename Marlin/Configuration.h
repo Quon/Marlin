@@ -514,10 +514,10 @@
   //#define DEFAULT_Ki 2.25
   //#define DEFAULT_Kd 440
 
-  //@ SapphirePro 50W MonsterHeater (full metal heatbreak, no sock no fans @200° C)
-  #define DEFAULT_Kp 16.6
-  #define DEFAULT_Ki 0.75
-  #define DEFAULT_Kd 91.5
+  //@ SapphirePlus 50W MonsterHeater (full metal heatbreak, no sock no fans @200° C)
+  #define DEFAULT_Kp 8.37
+  #define DEFAULT_Ki 0.39
+  #define DEFAULT_Kd 44.76
 
 #endif // PIDTEMP
 
@@ -700,7 +700,7 @@
  *          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
  * :['A4988', 'A5984', 'DRV8825', 'LV8729', 'L6470', 'L6474', 'POWERSTEP01', 'TB6560', 'TB6600', 'TMC2100', 'TMC2130', 'TMC2130_STANDALONE', 'TMC2160', 'TMC2160_STANDALONE', 'TMC2208', 'TMC2208_STANDALONE', 'TMC2209', 'TMC2209_STANDALONE', 'TMC26X', 'TMC26X_STANDALONE', 'TMC2660', 'TMC2660_STANDALONE', 'TMC5130', 'TMC5130_STANDALONE', 'TMC5160', 'TMC5160_STANDALONE']
  */
-//@ Sapphire Pro setup
+//@ Sapphire Plus setup
 #define X_DRIVER_TYPE  TMC2208_STANDALONE
 #define Y_DRIVER_TYPE  TMC2208_STANDALONE
 #define Z_DRIVER_TYPE  TMC2208_STANDALONE
