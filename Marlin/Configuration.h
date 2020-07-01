@@ -762,7 +762,7 @@
  *                                      X, Y, Z, E0 [, E1[, E2...]]
  */
 //@ settings from 1.0.3 stock firmware
-#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 412 }
+#define DEFAULT_AXIS_STEPS_PER_UNIT   { 80, 80, 400, 421.36 }
 
 /**
  * Default Max Feed Rate (mm/s)
@@ -991,7 +991,7 @@
  *
  * Specify a Probe position as { X, Y, Z }
  */
-#define NOZZLE_TO_PROBE_OFFSET { 0, -44, -1.53 }
+#define NOZZLE_TO_PROBE_OFFSET { 0, -44, -0.7 }
 
 // Most probes should stay away from the edges of the bed, but
 // with NOZZLE_AS_PROBE this can be negative for a wider probing area.
