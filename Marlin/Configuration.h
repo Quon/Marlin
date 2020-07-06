@@ -515,9 +515,12 @@
   //#define DEFAULT_Kd 440
 
   //@ SapphirePlus 50W MonsterHeater (full metal heatbreak, no sock no fans @200° C)
-  #define DEFAULT_Kp 8.37
-  #define DEFAULT_Ki 0.39
-  #define DEFAULT_Kd 44.76
+  // #define DEFAULT_Kp 8.37
+  // #define DEFAULT_Ki 0.39
+  // #define DEFAULT_Kd 44.76
+  #define DEFAULT_Kp 8.31
+  #define DEFAULT_Ki 0.38
+  #define DEFAULT_Kd 45.79
 
 #endif // PIDTEMP
 
