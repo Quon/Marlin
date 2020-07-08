@@ -81,9 +81,9 @@
 #define E0_STEP_PIN        PD6
 #define E0_DIR_PIN         PD3
 
-#define E1_ENABLE_PIN                       PA3
-#define E1_STEP_PIN                         PA6
-#define E1_DIR_PIN                          PA1
+#define Z2_ENABLE_PIN                       PA3
+#define Z2_STEP_PIN                         PA6
+#define Z2_DIR_PIN                          PA1
 
 //
 // Temperature Sensors
@@ -173,6 +173,19 @@
     #define BTN_EN1                         PE8
     #define BTN_EN2                         PE11
     #define LCD_BACKLIGHT_PIN               -1
+
+    #define FSMC_CS_PIN                       PD7   // NE4
+    #define FSMC_RS_PIN                       PD11  // A0
+
+    #define LCD_RESET_PIN                     PC6   // FSMC_RST
+    #define LCD_BACKLIGHT_PIN                 PD13
+
+    #if ENABLED(TOUCH_BUTTONS)
+      #define TOUCH_CS_PIN     PA7  // SPI2_NSS
+      #define TOUCH_SCK_PIN    PB13 // SPI2_SCK
+      #define TOUCH_MISO_PIN   PB14 // SPI2_MISO
+      #define TOUCH_MOSI_PIN   PB15 // SPI2_MOSI
+    #endif
 
     // MKS MINI12864 and MKS LCD12864B; If using MKS LCD12864A (Need to remove RPK2 resistor)
     #if ENABLED(MKS_MINI_12864)
