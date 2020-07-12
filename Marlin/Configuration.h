@@ -518,9 +518,12 @@
   // #define DEFAULT_Kp 8.37
   // #define DEFAULT_Ki 0.39
   // #define DEFAULT_Kd 44.76
-  #define DEFAULT_Kp 8.31
-  #define DEFAULT_Ki 0.38
-  #define DEFAULT_Kd 45.79
+  // #define DEFAULT_Kp 8.31
+  // #define DEFAULT_Ki 0.38
+  // #define DEFAULT_Kd 45.79
+  #define DEFAULT_Kp 8.43
+  #define DEFAULT_Ki 0.39
+  #define DEFAULT_Kd 45.97
 
 #endif // PIDTEMP
 
@@ -1133,8 +1136,8 @@
 // @section machine
 
 // The size of the print bed
-#define X_BED_SIZE 310
-#define Y_BED_SIZE 310
+#define X_BED_SIZE 300
+#define Y_BED_SIZE 300
 
 // Travel limits (mm) after homing, corresponding to endstop positions.
 #define X_MIN_POS 0
@@ -1142,7 +1145,7 @@
 #define Z_MIN_POS 0
 #define X_MAX_POS X_BED_SIZE
 #define Y_MAX_POS Y_BED_SIZE
-#define Z_MAX_POS 340
+#define Z_MAX_POS 320
 
 /**
  * Software Endstops
