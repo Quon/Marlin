@@ -76,15 +76,15 @@
   #define HI_RES                   // 5x5 Grid
   //#define MAX_RES                  // 7x7 Grid
   //#define BL_TOUCH_HIGH_SPEED      // Only for BLTouch 3.0 and 3.1 Probe Pin does not pull in when moving in XY. Use at your own risk!
-  //#define Z_CLEARANCE_BL        5  // Z Clearance between probe points
+  #define Z_CLEARANCE_BL        5  // Z Clearance between probe points
   #define MULTIPLE_PROBING_BL   2  // A total of 2 does fast/slow probes with a weighted average.  A total of 3 or more adds more slow probes, taking the average.
 #endif
   
 
 // Specify a Probe Offsetposition { X, Y, Z }
 #define OFFSET_X 0              // - Left   |   Right +
-#define OFFSET_Y 0              // - Front  |   Back +
-#define OFFSET_Z 0              // - Nozzle ist Higher as the Probe 0 Point |  + Really? you did somthing wrong.
+#define OFFSET_Y -44              // - Front  |   Back +
+#define OFFSET_Z -0.7              // - Nozzle ist Higher as the Probe 0 Point |  + Really? you did somthing wrong.
 
 
 // Motion Control Settings
