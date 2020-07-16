@@ -202,9 +202,9 @@
     //#define E1_STEP_PIN                     PA6  // USED BY UART Y Don't change
     //#define E1_DIR_PIN                      PA1  // USED BY UART Z Don't change
    #else
-    #define E1_ENABLE_PIN                     PA3
-    #define E1_STEP_PIN                       PA6 
-    #define E1_DIR_PIN                        PA1  
+    #define Z2_ENABLE_PIN                     PA3
+    #define Z2_STEP_PIN                       PA6 
+    #define Z2_DIR_PIN                        PA1  
   #endif
 
 //

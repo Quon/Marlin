@@ -59,8 +59,8 @@
 //===========================================================================
 
 // Core XY
-//#define SAPPHIRE_PRO
-//#define SAPPHIRE_PLUS
+// #define SAPPHIRE_PRO
+#define SAPPHIRE_PLUS
 
 // Cartesian
 //#define BLUER
@@ -70,14 +70,14 @@
 //===========================================================================
 
 // Probe Settings
-//#define BL_TOUCH                 // Enable BLTouch Settings
+#define BL_TOUCH                 // Enable BLTouch Settings
 #if ENABLED(BL_TOUCH)
   //#define LOW_RES                  // 3x3 Grid 
-  //#define HI_RES                   // 5x5 Grid
+  #define HI_RES                   // 5x5 Grid
   //#define MAX_RES                  // 7x7 Grid
   //#define BL_TOUCH_HIGH_SPEED      // Only for BLTouch 3.0 and 3.1 Probe Pin does not pull in when moving in XY. Use at your own risk!
   //#define Z_CLEARANCE_BL        5  // Z Clearance between probe points
-  //#define MULTIPLE_PROBING_BL   2  // A total of 2 does fast/slow probes with a weighted average.  A total of 3 or more adds more slow probes, taking the average.
+  #define MULTIPLE_PROBING_BL   2  // A total of 2 does fast/slow probes with a weighted average.  A total of 3 or more adds more slow probes, taking the average.
 #endif
   
 
@@ -121,18 +121,18 @@
 //          TMC2208, TMC2208_STANDALONE, TMC2209, TMC2209_STANDALONE,
 //          TMC26X,  TMC26X_STANDALONE,  TMC2660, TMC2660_STANDALONE,
 //          TMC5130, TMC5130_STANDALONE, TMC5160, TMC5160_STANDALONE
-//#define CUSTOM_STEPPER_DRIVERS
+#define CUSTOM_STEPPER_DRIVERS
 #if ENABLED(CUSTOM_STEPPER_DRIVERS)
-  #define DRIVER_X TMC2209_STANDALONE
-  #define DRIVER_Y TMC2209_STANDALONE
-  #define DRIVER_Z TMC2209_STANDALONE
-  #define DRIVER_E0 TMC2209_STANDALONE
+  #define DRIVER_X TMC2208_STANDALONE
+  #define DRIVER_Y TMC2208_STANDALONE
+  #define DRIVER_Z TMC2208_STANDALONE
+  #define DRIVER_E0 TMC2208_STANDALONE
   //#define DRIVER_E1 TMC2209_STANDALONE
-  //#define DRIVER_Z2 TMC2209_STANDALONE
+  #define DRIVER_Z2 TMC2208_STANDALONE
 
   //#define INVERT_X
   //#define INVERT_Y
-  #define INVERT_Z 
+  // #define INVERT_Z 
   #define INVERT_E0 
   //#define INVERT_Z2
   //#define INVERT_E1
@@ -1805,7 +1805,7 @@
       #define Z_MIN_POS 0
       #define X_MAX_POS X_BED_SIZE
       #define Y_MAX_POS Y_BED_SIZE
-      #define Z_MAX_POS 350
+      #define Z_MAX_POS 340
     #endif
   #elif ENABLED(BLUER)
     //Bluer
