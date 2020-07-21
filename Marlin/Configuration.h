@@ -71,7 +71,7 @@
 // @section info
 
 // Author info of this build printed to the host during boot and M115
-#define STRING_CONFIG_H_AUTHOR "3DPrintBeginner" // Who made the changes.
+#define STRING_CONFIG_H_AUTHOR "Quon" // Who made the changes.
 //#define CUSTOM_VERSION_FILE Version.h // Path from the root directory (no quotes)
 
 /**
@@ -484,9 +484,9 @@
   // If you are using a pre-configured hotend then you can use one of the value sets by uncommenting it
 
   // Ultimaker
-  #define DEFAULT_Kp 12.42
-  #define DEFAULT_Ki 0.85
-  #define DEFAULT_Kd 45.26
+  // #define DEFAULT_Kp 12.42
+  // #define DEFAULT_Ki 0.85
+  // #define DEFAULT_Kd 45.26
 
   // MakerGear
   //#define DEFAULT_Kp 7.0
@@ -497,6 +497,11 @@
   //#define DEFAULT_Kp 63.0
   //#define DEFAULT_Ki 2.25
   //#define DEFAULT_Kd 440
+
+  //Genius
+  #define DEFAULT_Kp 25.34
+  #define DEFAULT_Ki 3.33
+  #define DEFAULT_Kd 48.26
 
 #endif // PIDTEMP
 
@@ -535,9 +540,13 @@
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from FOPDT model - kp=.39 Tp=405 Tdead=66, Tc set to 79.2, aggressive factor of .15 (vs .1, 1, 10)
-  #define DEFAULT_bedKp 31.71
-  #define DEFAULT_bedKi 3.99
-  #define DEFAULT_bedKd 168.01
+  // #define DEFAULT_bedKp 31.71
+  // #define DEFAULT_bedKi 3.99
+  // #define DEFAULT_bedKd 168.01
+
+  #define DEFAULT_bedKp 38.06
+  #define DEFAULT_bedKi 5.10
+  #define DEFAULT_bedKd 189.14
 
   //120V 250W silicone heater into 4mm borosilicate (MendelMax 1.5+)
   //from pidautotune
