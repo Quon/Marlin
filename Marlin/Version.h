@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 #pragma once
@@ -34,7 +34,7 @@
  * Verbose version identifier which should contain a reference to the location
  * from where the binary was downloaded or the source code was compiled.
  */
-//#define DETAILED_BUILD_VERSION SHORT_BUILD_VERSION " (Github)"
+//#define DETAILED_BUILD_VERSION SHORT_BUILD_VERSION
 
 /**
  * The STRING_DISTRIBUTION_DATE represents when the binary file was built,
@@ -65,7 +65,7 @@
  * The WEBSITE_URL is the location where users can get more information such as
  * documentation about a specific Marlin release.
  */
-//#define WEBSITE_URL "http://marlinfw.org"
+//#define WEBSITE_URL "https://marlinfw.org"
 
 /**
  * Set the vendor info the serial USB interface, if changable

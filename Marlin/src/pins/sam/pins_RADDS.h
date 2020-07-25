@@ -16,7 +16,7 @@
  * GNU General Public License for more details.
  *
  * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  *
  */
 #pragma once
@@ -206,7 +206,7 @@
 #endif
 
 #define I2C_EEPROM
-#define E2END 0x1FFF                              // 8KB
+#define MARLIN_EEPROM_SIZE 0x2000                 // 8KB
 
 //
 // M3/M4/M5 - Spindle/Laser Control
