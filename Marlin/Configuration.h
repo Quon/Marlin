@@ -505,9 +505,9 @@
   //#define DEFAULT_Kd 440
 
   //Genius
-  #define DEFAULT_Kp 25.34
-  #define DEFAULT_Ki 3.33
-  #define DEFAULT_Kd 48.26
+#define DEFAULT_Kp 12.92
+#define DEFAULT_Ki 0.65
+#define DEFAULT_Kd 64.05
 
 #endif // PIDTEMP
 
@@ -805,8 +805,8 @@
  */
 //#define CLASSIC_JERK
 #if ENABLED(CLASSIC_JERK)
-  #define DEFAULT_XJERK 6.0
-  #define DEFAULT_YJERK 6.0
+  #define DEFAULT_XJERK 8.0
+  #define DEFAULT_YJERK 8.0
   #define DEFAULT_ZJERK  0.3
 
   //#define TRAVEL_EXTRA_XYJERK 0.0     // Additional jerk allowance for all travel moves
@@ -817,7 +817,7 @@
   #endif
 #endif
 
-#define DEFAULT_EJERK    5.0  // May be used by Linear Advance
+#define DEFAULT_EJERK    7.0  // May be used by Linear Advance
 
 /**
  * Junction Deviation Factor
